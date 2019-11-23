@@ -1,4 +1,4 @@
-package main.java.encryptedwithkey;
+package main.java.encrypted.stage2;
 
 import java.util.Arrays;
 

@@ -1,6 +1,6 @@
 package test.java.encryptedwithkey;
 
-import main.java.encryptedwithkey.EncryptWithKey;
+import main.java.encrypted.stage2.EncryptWithKey;
 import org.junit.Assert;
 import org.junit.Test;
 
