@@ -1,5 +1,8 @@
 package main.java.coffee.stage3;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -27,17 +30,15 @@ public class CoffeeMachine {
 	}
 
 	private static void calculateIngredients(int wantedCoffee) {
-		actualWater -= wantedCoffee * WATER_OF_ONE_PORTION;
-		actualMilk -= wantedCoffee * MILK_OF_ONE_PORTION;
-		actualBeans -= wantedCoffee * BEANS_OF_ONE_PORTION;
-		if (actualWater == 0 || actualMilk == 0 || actualBeans == 0) {
+		List<Integer> possiblePortions = Arrays.asList(actualWater / WATER_OF_ONE_PORTION, actualMilk / MILK_OF_ONE_PORTION,
+				actualBeans / BEANS_OF_ONE_PORTION);
+		int possiblePortion = Collections.min(possiblePortions);
+		if (possiblePortion == wantedCoffee) {
 			System.out.println(ENOUGH_INGREDIENTS);
-		} else
-			if (actualWater < 0 || actualMilk < 0 || actualBeans < 0) {
-				int cups = -1; // kiszámítás!
-				System.out.println("No, I can make only " + cups + " cup(s) of coffee");
-			} else {
-				System.out.println("valami ...");
-			}
+		} else if (possiblePortion < wantedCoffee) {
+			System.out.println("No, I can make only " + possiblePortion + " cup(s) of coffee");
+		} else {
+			System.out.println("Yes, I can make that amount of coffee (and even " + (possiblePortion - wantedCoffee) + " more than that)");
+		}
 	}
 }
